@@ -12,7 +12,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="assets/style/main.css">
   <link rel="stylesheet" href="assets/style/style.css">
-  <title>ltFall22_gregsList</title>
+  <title>Gregs_List</title>
 </head>
 
 <body>
@@ -21,16 +21,19 @@
       <a class="navbar-brand ms-3" href="#">
         <img src="https://codeworks.blob.core.windows.net/public/assets/img/cw-mark.png" height="45" alt=""
           loading="lazy">
-        <span class="ms-2">ltFall22_gregsList</span>
+        <span class="ms-2">Gregs_List</span>
       </a>
       <button class="btn btn-primary me-3" onclick="app.carsController.showCars()">Cars</button>
       <button class="btn btn-primary">Homes</button>
     </nav>
   </header>
+
+
   <main>
     <div class="container-fluid">
       <div class="row my-3">
         <div class="col-6 m-auto" id="listing-form">
+
           <!-- NOTE form for our current listing type -->
           <!-- <form onsubmit="app.carsController.createCar()">
             <div class="form-floating mb-3">
@@ -72,6 +75,7 @@
           </form> -->
         </div>
       </div>
+
       <div class="row" id="listings">
         <!-- FIXME Step 3: Build out a template for our model -->
         <!-- STUB Car template -->
@@ -90,9 +94,32 @@
             </div>
           </div>
         </div> -->
+
+        <!-- STUB House Template -->
+        <!-- <div class="col-4 p-4">
+          <div class="card">
+            <img
+              src="https://images.unsplash.com/photo-1527368717868-ff088cc80d0a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y290dGFnZXxlbnwwfDJ8MHx8&auto=format&fit=crop&w=500&q=60"
+              class="card-img-top card-size" alt="Cottage">
+            <div class="card-body">
+              <h5 class="card-title d-flex justify-content-betwen mb-2">
+                <span>Cottage</span>
+                <span>$150,000</span>
+                <span>2 Bedrooms / 1 Bathroom</span>
+              </h5>
+              <button class="btn btn-primary">
+                See Details
+              </button>
+            </div>
+          </div>
+        </div> -->
+
+
       </div>
     </div>
   </main>
+
+
   <footer class="bg-dark text-light">
     <div class="text-center no-select">
       <p><small>Made with 💖 by CodeWorks</small></p>
