@@ -6,9 +6,13 @@ import { Pop } from "../Utils/Pop.js"
 import { setHTML } from "../Utils/Writer.js"
 
 function _drawCars() {
+  const cars = appState.cars
   let template = ''
-  appState.cars.forEach(car => template += car.CardTemplate)
+  cars.forEach(car => template += car.CardTemplate)
   setHTML('listings', template)
+}
+
+function _drawCarForm() {
   setHTML('listing-form', Car.GetCarFormTemplate())
 }
 
@@ -20,10 +24,11 @@ function _drawActiveCar() {
 // FIXME Step 5: Create a controller with a console log in the contructor
 export class CarsController {
 
-  constructor () {
+  constructor() {
     // NOTE first step should always be get a console log
     // console.log('Hello Jeremy, your cars controller is working')
-    // _drawCars()
+    _drawCars()
+    _drawCarForm()
     appState.on('cars', _drawCars)
     appState.on('activeCar', _drawActiveCar)
   }
@@ -51,6 +56,7 @@ export class CarsController {
 
   showCars() {
     _drawCars()
+    _drawCarForm()
   }
 
 }
