@@ -42,10 +42,9 @@ export class House {
 
   static GetHouseForm() {
     return `
-    <form>
+    <form onsubmit="app.housesController.createHouse()">
     <div class="form-floating mb-3">
-      <input required type="text" minlength="3" class="form-control" id="type" placeholder="Home Type"
-        name="type">
+      <input required type="text" minlength="3" class="form-control" id="type" placeholder="Home Type" name="type">
       <label for="type">Home Type</label>
     </div>
     <div class="form-floating mb-3">
@@ -71,7 +70,7 @@ export class House {
       <label for="house-price">Price</label>
     </div>
     <div class="form-floating mb-3">
-      <input required type="number" class="form-control" id="location" placeholder="Location" name="location">
+      <input required type="text" class="form-control" id="location" placeholder="Location" name="location">
       <label for="location">Location</label>
     </div>
     <div class="form-floating">

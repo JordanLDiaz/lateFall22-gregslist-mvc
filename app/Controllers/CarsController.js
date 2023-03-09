@@ -33,12 +33,9 @@ export class CarsController {
     appState.on('activeCar', _drawActiveCar)
   }
 
-  // NOTE only use async/await for Pop.confirm this week
-  async removeCar(carId) {
-    if (await Pop.confirm('Are you sure want to delete that car')) {
-      carsService.removeCar(carId)
-
-    }
+  showCars() {
+    _drawCars()
+    _drawCarForm()
   }
 
   createCar() {
@@ -54,9 +51,12 @@ export class CarsController {
     carsService.setActiveCar(carId)
   }
 
-  showCars() {
-    _drawCars()
-    _drawCarForm()
+  // NOTE only use async/await for Pop.confirm this week
+  async removeCar(carId) {
+    if (await Pop.confirm('Are you sure want to delete that car')) {
+      carsService.removeCar(carId)
+    }
   }
+
 
 }

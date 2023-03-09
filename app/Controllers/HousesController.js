@@ -1,5 +1,7 @@
 import { appState } from "../AppState.js"
 import { House } from "../Models/House.js";
+import { housesService } from "../Services/HousesService.js";
+import { getFormData } from "../Utils/FormHandler.js";
 import { Pop } from "../Utils/Pop.js";
 import { setHTML } from "../Utils/Writer.js";
 
@@ -20,10 +22,16 @@ function _drawHouseForm() {
 export class HousesController {
   constructor() {
     // console.log('Hello Jordan, your car controller is working!')
-    // _drawHouses()
     appState.on('houses', _drawHouses)
   }
 
+  createHouse() {
+    window.event.preventDefault()
+    let form = window.event.target
+    let formData = getFormData(form)
+    console.log(formData)
+    housesService.createHouse(formData)
+  }
   showHouses() {
     _drawHouses()
     _drawHouseForm()
