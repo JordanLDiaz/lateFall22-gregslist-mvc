@@ -42,11 +42,15 @@ export class CarsController {
 
   createCar() {
     // NOTE don't refresh the page
+    // @ts-ignore
     window.event.preventDefault()
+    // @ts-ignore
     let form = window.event.target
     let formData = getFormData(form)
     console.log(formData);
     carsService.createCar(formData)
+    // @ts-ignore
+    form.reset()
   }
 
   // NOTE only use async/await for Pop.confirm this week

@@ -38,12 +38,16 @@ export class JobsController {
   }
 
   createJob() {
+    // @ts-ignore
     window.event.preventDefault()
     // console.log('creating job');
+    // @ts-ignore
     let form = window.event.target
     let formData = getFormData(form)
     // console.log('this is my formdata', formData);
     jobsService.createJob(formData)
+    // @ts-ignore
+    form.reset()
   }
 
   async removeJob(jobId) {

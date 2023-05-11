@@ -71,44 +71,66 @@ export class Car {
 
   static GetCarFormTemplate() {
     return `
-    <form onsubmit="app.carsController.createCar()">
-      <div class="form-floating mb-3">
-        <input required type="text" minlength="3" class="form-control" id="car-make" placeholder="Car Make"
-          name="make">
-        <label for="car-make">Make</label>
+    <section class="row my-3 justify-content-center">
+    <div class="col-12 d-flex justify-content-center">
+      <p>
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+          aria-expanded="false" aria-controls="collapseExample">
+          Add New Car
+        </button>
+      </p>
+    </div>
+    <div class="col-9 collapse" id="collapseExample">
+      <div class="card py-2" id="listing-form">
+        <form onsubmit="app.carsController.createCar()">
+          <div class="mb-3 mx-5">
+            <label for="car-make">Make</label>
+            <input type="text" name="make" class="form-control" id="car-make" placeholder="Car Make"
+              aria-describedby="carMake" min-length="3" maxlength="15" required>
+          </div>
+          <div class="mb-3  mx-5">
+            <label for="car-model">Model</label>
+            <input type="text" name="model" class="form-control" id="car-model" placeholder="Car Model"
+              aria-describedby="carModel" min-length="3" maxlength="15" required>
+          </div>
+          <div class="mb-3 mx-5">
+            <label for="img">Image URL</label>
+            <input type="url" name="img" class="form-control" id="car-img" placeholder="Car Image"
+              aria-describedby="carImage" required>
+          </div>
+          <div class="mb-3 mx-5">
+            <label for="price">Price</label>
+            <input type="number" name="price" class="form-control" id="car-price" placeholder="Car Price"
+              aria-describedby="carPrice" min="3" required>
+          </div>
+          <div class="mb-3 mx-5">
+            <label for="year">Year</label>
+            <input type="number" name="year" class="form-control" id="car-year" placeholder="Car Year"
+              aria-describedby="carYear" min="4" required>
+          </div>
+          <div class="mb-3 mx-5">
+            <label for="mileage">Mileage</label>
+            <input type="number" name="mileage" class="form-control" id="car-milage" placeholder="Car Year"
+              aria-describedby="carMileage" min="4" required>
+          </div>
+          <div class="mb-3 mx-5">
+            <label for="color">Color</label>
+            <input type="text" name="color" class="form-control" id="car-color" placeholder="Car Color"
+              aria-describedby="carColor" required>
+          </div>
+          <div class="mb-3 mx-5">
+            <label for="description">Description</label>
+            <input type="text" name="description" class="form-control" id="car-description" placeholder="Car Description"
+              aria-describedby="carDescription" min-length="3" required>
+          </div>
+          <div class="text-center mx-5">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="btn" class="btn btn-danger">Cancel</button>
+          </div>
+        </form>
       </div>
-      <div class="form-floating mb-3">
-        <input required type="text" class="form-control" id="car-model" placeholder="Car Model" name="model">
-        <label for="car-model">Model</label>
-      </div>
-      <div class="form-floating mb-3">
-        <input required type="url" class="form-control" id="car-img" placeholder="Car Image" name="img">
-        <label for="car-img">Image</label>
-      </div>
-      <div class="form-floating mb-3">
-        <input required type="number" class="form-control" id="car-price" placeholder="Car Price" name="price">
-        <label for="car-price">Price</label>
-      </div>
-      <div class="form-floating mb-3">
-        <input required type="number" class="form-control" id="car-year" placeholder="Car Year" name="year">
-        <label for="car-year">Year</label>
-      </div>
-      <div class="form-floating mb-3">
-        <input required type="number" class="form-control" id="car-miles" placeholder="Car Miles" name="mileage">
-        <label for="car-miles">Mileage</label>
-      </div>
-      <div class="form-floating mb-3">
-        <input required type="text" class="form-control" id="car-color" placeholder="Car Color" name="color">
-        <label for="car-color">Color</label>
-      </div>
-      <div class="form-floating">
-        <textarea class="form-control" placeholder="Leave a description here" id="car-description"
-          name="description"></textarea>
-        <label for="car-description">Description</label>
-      </div>
-      <button type="submit" class="btn btn-success mt-3">Submit</button>
-      <button type="reset" class="btn btn-outline-danger mt-3">Reset</button>
-    </form>
+    </div>
+  </section>
     `
   }
 

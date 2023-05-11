@@ -65,45 +65,66 @@ export class House {
 
   static GetHouseForm() {
     return `
-    <form onsubmit="app.housesController.createHouse()">
-    <div class="form-floating mb-3">
-      <input required type="text" minlength="3" class="form-control" id="type" placeholder="Home Type" name="type">
-      <label for="type">Home Type</label>
+    <section class="row my-3 justify-content-center">
+    <div class="col-12 d-flex justify-content-center">
+      <p>
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+          aria-expanded="false" aria-controls="collapseExample">
+          Add New Home
+        </button>
+      </p>
     </div>
-    <div class="form-floating mb-3">
-      <input required type="number" class="form-control" id="bedroom" placeholder="Bedrooms" name="bedroom">
-      <label for="bedroom">Bedrooms</label>
+    <div class="col-9 collapse" id="collapseExample">
+      <div class="card py-2" id="listing-form">
+        <form onsubmit="app.housesController.createHouse()">
+          <div class="mb-3 mx-5">
+            <label for="house-type">Type of Home</label>
+            <input type="text" name="type" class="form-control" id="type" placeholder="Home Type"
+              aria-describedby="type" min-length="3" maxlength="15" required>
+          </div>
+          <div class="mb-3  mx-5">
+            <label for="house-bedroom">Bedrooms</label>
+            <input type="number" name="bedroom" class="form-control" id="bedroom" placeholder="Bedrooms"
+              aria-describedby="bedroom" min="0" max="50" required>
+          </div>
+          <div class="mb-3 mx-5">
+            <label for="house-bathroom">Bathrooms</label>
+            <input type="number" name="bathroom" class="form-control" id="bathroom" placeholder="Bathrooms"
+              aria-describedby="bathroom" min="0" max="50" required>
+          </div>
+          <div class="mb-3 mx-5">
+            <label for="sqFootage">Sq. Footage</label>
+            <input type="number" name="sqFootage" class="form-control" id="sqFootage" placeholder="Sq. Footage"
+              aria-describedby="sqFootage" min="100" required>
+          </div>
+          <div class="mb-3 mx-5">
+            <label for="price">Price</label>
+            <input type="number" name="price" class="form-control" id="price" placeholder="Price"
+              aria-describedby="Price" required>
+          </div>
+          <div class="mb-3 mx-5">
+            <label for="img">Image URL</label>
+            <input type="url" name="img" class="form-control" id="img" placeholder="Image Url"
+              aria-describedby="img" required>
+          </div>
+          <div class="mb-3 mx-5">
+          <label for="location">Location</label>
+          <input type="text" name="location" class="form-control" id="location" placeholder="Location"
+            aria-describedby="location" required>
+        </div>
+          <div class="mb-3 mx-5">
+            <label for="description">Description</label>
+            <textarea type="text" name="description" class="form-control" id="description" placeholder="Home Description"
+              aria-describedby="description" rows="3" min-length="3" required> </textarea>
+          </div>
+          <div class="text-center mx-5">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="btn" class="btn btn-danger">Cancel</button>
+          </div>
+        </form>
+      </div>
     </div>
-    <div class="form-floating mb-3">
-      <input required type="number" class="form-control" id="bathroom" placeholder="Bathrooms" name="bathroom">
-      <label for="bathroom">Bathrooms</label>
-    </div>
-    <div class="form-floating mb-3">
-      <input required type="number" class="form-control" id="sqFootage" placeholder="Sq. Footage"
-        name="sqFootage">
-      <label for="sqFootage">Sq Footage</label>
-    </div>
-    <div class="form-floating mb-3">
-      <input required type="url" class="form-control" id="img" placeholder="House Image" name="img">
-      <label for="house-img">Image Url</label>
-    </div>
-    <div class="form-floating mb-3">
-      <input required type="number" class="form-control" id="price" placeholder="House Price"
-        name="price">
-      <label for="house-price">Price</label>
-    </div>
-    <div class="form-floating mb-3">
-      <input required type="text" class="form-control" id="location" placeholder="Location" name="location">
-      <label for="location">Location</label>
-    </div>
-    <div class="form-floating">
-      <textarea class="form-control" placeholder="Leave a description here" id="house-description"
-        name="description"></textarea>
-      <label for="house-description">Description</label>
-    </div>
-    <button type="submit" class="btn btn-success mt-3">Submit</button>
-    <button type="reset" class="btn btn-outline-danger mt-3">Reset</button>
-  </form>
+  </section>
     `
   }
 }

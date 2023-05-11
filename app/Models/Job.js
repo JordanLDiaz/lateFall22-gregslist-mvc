@@ -51,7 +51,7 @@ export class Job {
     <img src="${this.img}" alt="car" class="img-fluid">
     <b>Salary: $${this.salary}</b>
     <p>${this.description}</p>
-    <div>Company: ${this.company} miles</div>
+    <div>Company: ${this.company} </div>
     <div>Location: ${this.location}</div>
   </div>
   <div class="modal-footer">
@@ -62,36 +62,56 @@ export class Job {
 
   static JobForm() {
     return `
-    <form onsubmit="app.jobsController.createJob()">
-    <div class="form-floating mb-3">
-      <input required type="text" minlength="3" class="form-control" id="title" placeholder="Job Title"
-        name="title">
-      <label for="job-title">Job Title</label>
+    <section class="row my-3 justify-content-center">
+    <div class="col-12 d-flex justify-content-center">
+      <p>
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+          aria-expanded="false" aria-controls="collapseExample">
+          Add New Job
+        </button>
+      </p>
     </div>
-    <div class="form-floating mb-3">
-      <input required type="number" class="form-control" id="salary" placeholder="Job Salary" name="salary">
-      <label for="job-salary">Job Salary</label>
+    <div class="col-9 collapse" id="collapseExample">
+      <div class="card py-2" id="listing-form">
+        <form onsubmit="app.jobsController.createJob()">
+          <div class="mb-3 mx-5">
+            <label for="title">Title</label>
+            <input type="text" name="title" class="form-control" id="title" placeholder="Job Title"
+              aria-describedby="title" min-length="3"required>
+          </div>
+          <div class="mb-3  mx-5">
+            <label for="salary">Salary</label>
+            <input type="number" name="salary" class="form-control" id="salary" placeholder="Salary"
+              aria-describedby="salary" required>
+          </div>
+          <div class="mb-3 mx-5">
+            <label for="company">Company</label>
+            <input type="text" name="company" class="form-control" id="company" placeholder="Company"
+              aria-describedby="company" min="0" max="50" required>
+          </div>
+          <div class="mb-3 mx-5">
+            <label for="img">Image URL</label>
+            <input type="url" name="img" class="form-control" id="img" placeholder="Image Url"
+              aria-describedby="img" required>
+          </div>
+          <div class="mb-3 mx-5">
+          <label for="location">Location</label>
+          <input type="text" name="location" class="form-control" id="location" placeholder="Location"
+            aria-describedby="location" required>
+        </div>
+          <div class="mb-3 mx-5">
+            <label for="description">Description</label>
+            <textarea type="text" name="description" class="form-control" id="description" placeholder="Home Description"
+              aria-describedby="description" rows="3" min-length="3" required> </textarea>
+          </div>
+          <div class="text-center mx-5">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="btn" class="btn btn-danger">Cancel</button>
+          </div>
+        </form>
+      </div>
     </div>
-    <div class="form-floating mb-3">
-      <input required type="url" class="form-control" id="img" placeholder="Job Image" name="img">
-      <label for="job-img">Image</label>
-    </div>
-    <div class="form-floating mb-3">
-      <input required type="company" class="form-control" id="company" placeholder="Job Company" name="company">
-      <label for="job-company">Job Company</label>
-    </div>
-    <div class="form-floating mb-3">
-      <input required type="text" class="form-control" id="location" placeholder="Job Location" name="location">
-      <label for="job-location">Job Location</label>
-    </div>
-    <div class="form-floating">
-      <textarea class="form-control" placeholder="Leave a description here" id="description"
-        name="description"></textarea>
-      <label for="job-description">Job Description</label>
-    </div>
-    <button type="submit" class="btn btn-success mt-3">Submit</button>
-    <button type="reset" class="btn btn-outline-danger mt-3">Reset</button>
-  </form>
+  </section>
     `
   }
 }

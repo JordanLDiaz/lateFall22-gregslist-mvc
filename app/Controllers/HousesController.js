@@ -38,11 +38,15 @@ export class HousesController {
   }
 
   createHouse() {
+    // @ts-ignore
     window.event.preventDefault()
+    // @ts-ignore
     let form = window.event.target
     let formData = getFormData(form)
     console.log(formData)
     housesService.createHouse(formData)
+    // @ts-ignore
+    form.reset()
   }
 
   async removeHouse(houseId) {
