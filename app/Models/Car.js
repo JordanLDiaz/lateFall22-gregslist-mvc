@@ -3,8 +3,7 @@
 import { generateId } from "../Utils/generateId.js"
 
 export class Car {
-
-  constructor (data) {
+  constructor(data) {
     this.id = generateId()
     this.make = data.make
     // NOTE JS dates are cool? https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date

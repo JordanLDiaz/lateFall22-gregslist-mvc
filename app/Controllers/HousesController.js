@@ -13,16 +13,28 @@ function _drawHouses() {
   setHTML('listings', template)
 }
 
+function _drawActiveHouse() {
+  setHTML('details', appState.activeHouse.ActiveHouseTemplate)
+}
+
 function _drawHouseForm() {
   setHTML('listing-form', House.GetHouseForm())
 }
-
-
 
 export class HousesController {
   constructor() {
     // console.log('Hello Jordan, your car controller is working!')
     appState.on('houses', _drawHouses)
+    appState.on('activeHouse', _drawActiveHouse)
+  }
+
+  showHouses() {
+    _drawHouses()
+    _drawHouseForm()
+  }
+
+  setActiveHouse(houseId) {
+    housesService.setActiveHouse(houseId)
   }
 
   createHouse() {
@@ -32,15 +44,11 @@ export class HousesController {
     console.log(formData)
     housesService.createHouse(formData)
   }
-  showHouses() {
-    _drawHouses()
-    _drawHouseForm()
-  }
 
-  // async removeHouse() {
-  //   if (await Pop.confirm('Are you sure you want to delete that?')) {
-  //     housesService.removeHouse(houseId)
-  //     // console.log('remove house working')
-  //   }
-  // }
+  async removeHouse(houseId) {
+    if (await Pop.confirm('Are you sure you want to delete this house?')) {
+      housesService.removeHouse(houseId)
+      // console.log('remove house working')
+    }
+  }
 }

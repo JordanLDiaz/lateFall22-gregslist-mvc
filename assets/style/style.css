@@ -2,3 +2,11 @@
   height: 30vh;
   width: auto;
 }
+
+.bg-green {
+  background-color: rgb(61, 101, 61);
+}
+
+.bg-lightGreen {
+  background-color: rgb(231, 246, 231);
+}

@@ -5,16 +5,17 @@ import { saveState } from "../Utils/Store.js";
 
 
 class CarsService {
+  setActiveCar(carId) {
+    let foundCar = appState.cars.find(c => c.id == carId)
+    console.log(foundCar);
+    appState.activeCar = foundCar
+  }
+
   createCar(formData) {
     let newCar = new Car(formData)
     // console.log(newCar);
     appState.cars = [...appState.cars, newCar]
     saveState('cars', appState.cars)
-  }
-  setActiveCar(carId) {
-    let foundCar = appState.cars.find(c => c.id == carId)
-    console.log(foundCar);
-    appState.activeCar = foundCar
   }
 
   removeCar(carId) {

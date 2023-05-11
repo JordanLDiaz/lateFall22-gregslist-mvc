@@ -11,11 +11,12 @@ export class House {
     this.img = data.img
     this.description = data.description
     this.location = data.location
+    this.createdAt = new Date()
   }
 
   get CardTemplate() {
     return `
-    <div class="col-3 p-4">
+    <div class="col-12 col-md-4 p-4">
       <div class="card">
         <img src="${this.img}" class="card-img-top card-size" alt="${this.type}">
         <div class="card-body">
@@ -28,15 +29,37 @@ export class House {
               <div> ${this.bedroom} bed / ${this.bathroom} bath </div>
             </div>
           </h5>
-          <button class="btn btn-primary">
+          <button onclick="app.housesController.setActiveHouse('${this.id}')"  data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary">
             See Details
           </button>
-          <button onclick="app.housesController.removeHouse()" title="Delete House!" class="btn btn-danger">
+          <button onclick="app.housesController.removeHouse('${this.id}')" title="Delete House!" class="btn btn-danger">
             <i class="mdi mdi-delete"></i>
           </button>
         </div>
       </div>
     </div>
+    `
+  }
+
+  get ActiveHouseTemplate() {
+    return `
+    <div class="modal-header">
+    <h1 class="modal-title fs-5" id="exampleModalLabel">${this.type}</h1>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+  <div class="modal-body">
+    <h5>
+    ${this.createdAt.toLocaleDateString()}
+    </h5>
+    <img src="${this.img}" alt="car" class="img-fluid">
+    <b> ${this.bedroom} beds | ${this.bathroom} baths</b>
+    <div> ${this.sqFootage} sqft. | $${this.price}</div>
+    <p>${this.description}</p>
+    <div>Located in ${this.location}</div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+  </div>
     `
   }
 
@@ -65,7 +88,7 @@ export class House {
       <label for="house-img">Image Url</label>
     </div>
     <div class="form-floating mb-3">
-      <input required type="number" class="form-control" id="house-price" placeholder="House Price"
+      <input required type="number" class="form-control" id="price" placeholder="House Price"
         name="price">
       <label for="house-price">Price</label>
     </div>

@@ -1,5 +1,6 @@
 import { Car } from "./Models/Car.js"
 import { House } from "./Models/House.js"
+import { Job } from "./Models/Job.js"
 import { Value } from "./Models/Value.js"
 import { EventEmitter } from "./Utils/EventEmitter.js"
 import { isValidProp } from "./Utils/isValidProp.js"
@@ -8,20 +9,18 @@ import { loadState } from "./Utils/Store.js"
 // FIXME Step 2: set up a place to store our data
 
 class AppState extends EventEmitter {
-  /** @type {import('./Models/Value').Value[]} */
-  values = loadState('values', [Value])
-
   // NOTE this does denote what is stored in this collection, but it also gives us intellisense in our code
+
   // SECTION Cars
   /** @type {import('./Models/Car').Car[]} */
   cars = loadState('cars', [Car])
+  // cars = []
 
   /** @type {import('./Models/Car').Car|null} */
   activeCar = null
 
   // SECTION Houses
   /** @type {import('./Models/House').House[]} */
-
   houses = loadState('houses', [House])
   // houses = [
   //   new House({
@@ -55,6 +54,40 @@ class AppState extends EventEmitter {
   //     location: 'Scotland'
   //   })
   // ]
+  /** @type {import('./Models/House').House|null} */
+
+  activeHouse = null
+
+
+  // SECTION Jobs
+  /** @type {import('./Models/Job').Job[]} */
+  jobs = loadState('jobs', [Job])
+  // jobs = [
+  //   new Job({
+  //     title: 'Software Engineer',
+  //     salary: 45000,
+  //     company: 'Google',
+  //     description: 'Code all the things',
+  //     img: 'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c29mdHdhcmUlMjBkZXZ8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60',
+  //     location: 'Seattle'
+  //   }),
+  //   new Job({
+  //     title: 'Cat Walker',
+  //     salary: 50000,
+  //     company: 'Rover',
+  //     description: 'Walk all the cats',
+  //     img: 'https://images.unsplash.com/photo-1641762719225-0fba618a7366?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y2F0JTIwb24lMjBsZWFzaHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60',
+  //     location: 'Meridian'
+  //   })
+  // ]
+
+  /** @type {import('./Models/Job').Job|null} */
+  activeJob = null
+
+  // SECTION Pets
+  /** @type {import('./Models/House').House[]} */
+
+
 }
 
 export const appState = new Proxy(new AppState(), {
