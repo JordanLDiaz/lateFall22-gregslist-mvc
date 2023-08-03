@@ -15,7 +15,7 @@ function _drawJobs() {
 
 function _drawActiveJob() {
   // console.log('drawing active job');
-  setHTML('details', appState.activeJob.ActiveJobTemplate)
+  setHTML('details', appState.activeJob?.ActiveJobTemplate)
 }
 
 function _drawJobForm() {

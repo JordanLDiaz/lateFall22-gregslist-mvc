@@ -1,10 +1,12 @@
 import { Car } from "./Models/Car.js"
+import { Furniture } from "./Models/Furniture.js"
 import { House } from "./Models/House.js"
 import { Job } from "./Models/Job.js"
+import { Pet } from "./Models/Pet.js"
 import { Value } from "./Models/Value.js"
 import { EventEmitter } from "./Utils/EventEmitter.js"
 import { isValidProp } from "./Utils/isValidProp.js"
-import { loadState } from "./Utils/Store.js"
+import { loadState, saveState } from "./Utils/Store.js"
 
 // FIXME Step 2: set up a place to store our data
 
@@ -85,9 +87,39 @@ class AppState extends EventEmitter {
   activeJob = null
 
   // SECTION Pets
-  /** @type {import('./Models/House').House[]} */
+  /** @type {import('./Models/Pet').Pet[]} */
+  // pets = [
+  //   new Pet({
+  //     species: 'Cat',
+  //     breed: 'Tabby',
+  //     name: 'Simon',
+  //     age: 7,
+  //     price: 25,
+  //     description: 'The cutest little babe you ever did meet.',
+  //     location: 'Meridian, ID',
+  //     img: 'https://images.unsplash.com/photo-1589872267076-a0859175685b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dGFiYnklMjBjYXR8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60'
+  //   })
+  // ]
+  pets = loadState('pets', [Pet])
+  /** @type {import('./Models/Pet').Pet|null} */
+  activePet = null
 
 
+  // SECTION furniture
+  /** @type {import('./Models/Furniture').Furniture[]} */
+  furnitures = [
+    new Furniture({
+      item: "couch",
+      price: 150,
+      location: 'Meridian',
+      description: 'Well loved, just a few cat scratches...',
+      img: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y291Y2h8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60',
+      condition: 'good'
+    })
+  ]
+
+  /** @type {import('./Models/Furniture').Furniture|null} */
+  activeFurniture = null
 }
 
 export const appState = new Proxy(new AppState(), {
